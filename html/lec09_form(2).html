@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form태그 과제</title>
+</head>
+<body>
+    <h1>납품 대장</h1>
+    <fieldset>
+        <legend>납품자 정보</legend>
+        <label for="u_name">1. 납품자명 : </label>
+        <input type="name" required id="u_name" placeholder="name"><br>
+        <label for="u_mail">2. email : </label>
+        <input type="email" required id="u_mail" placeholder="hkd@naver.com">
+    </fieldset>
+    <fieldset>
+        <legend>납품정보</legend>
+        <ul>
+            <li>
+                <label for="p_name">상품명 : </label>
+                <input type="text" id="p_name"><br>
+            </li>
+            <li>
+                <label>납품수량 : </label>
+                <input type="number" min="100" placeholder="최소 100">
+            </li>
+            <li>
+                <label>납품등급 :</label>
+                <input type="range" min="1" max="10" step="1">
+            </li>
+            <li>
+                <label>기타사항 : </label>
+                <textarea cols="20" rows="3"></textarea>
+            </li>
+        </ul>
+    </fieldset>
+    
+    <button type="submit">send message</button>
+    <h1>회원가입</h1>
+    <fieldset>
+        <legend>필수 입력 사항</legend>
+        <table>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+        </table>
+        <label for="user_id"><strong>ID</strong></label>
+        <input type="id" id="user_id" name="user_id" placeholder="아이디 10글자 이내" required>
+        <button type="submit">중복 확인</button><br>
+        <label for="user_pw"><strong>비밀번호</strong></label>
+        <input type="password" id="user_pw" name="user_pw" placeholder="영문,숫자 포함 8자리 이상" required><br>
+        <label><strong>비밀번호 확인</strong></label>
+        <input type="password" id="user_pw_check" name="user_pw_check"><br>
+        <label><strong>Email</strong></label>
+        <input type="email" id="user_mail" name="user_mail">
+        <select name="user_select" id="user_select">
+            <option value="0">직접입력</option>
+            <option value="1">@gmail.com</option>
+            <option value="2">@naver.com</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <legend>추가 정보</legend>
+        <label for="u_pic">프로필 사진 : </label>
+        <input type="file" id="u_pic" name="u_pic"><br><br>
+        <label>성별 : </label>
+        <input type="radio" value="1" id="man" name="gender">
+        <label for="man">남자</label>
+        <input type="radio" value="2" id="woman" name="gender">
+        <label for="woman">여자</label><br>
+        <label>생년월일 : </label>
+        <input type="date" id="birth" name="birth"><br><br>
+        <label>취미</label><br>
+        <input type="checkbox" value="1" id="baseball" name="hobby">
+        <label for="baseball">야구</label>
+        <input type="checkbox" value="2" id="basketball" name="hobby">
+        <label for="basketball">농구</label>
+        <input type="checkbox" value="3" id="soccer" name="hobby">
+        <label for="soccer">축구</label><br>
+        <input type="checkbox" value="4" id="study" name="hobby">
+        <label for="study">공부</label>
+        <input type="checkbox" value="5" id="music" name="hobby">
+        <label for="music">음악감상</label><br>
+        <input type="checkbox" value="6" id="etc" name="hobby">
+        <label for="etc">기타 : </label>
+        <input type="text"><br><br>
+        <label>자기소개</label><br>
+        <textarea cols="80" rows="7"></textarea>
+    </fieldset>
+    <button type="submit">회원가입</button>
+    <button type="reset">다시입력</button>
+    <button type="button">이전으로</button>
+    <h1>백엔드 개발자 지원서</h1>
+    <p>Java, Spring, DataBase에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
+    <hr>
+    <
+</body>
+</html>
