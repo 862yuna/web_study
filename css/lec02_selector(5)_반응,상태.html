@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>후손, 자손 선택자</title>
+    <title>반응, 상태 선택자</title>
 </head>
 <body>
-    
+    <style>
+        #p1:active{background-color:mediumseagreen;}
+        #p2{color:yellow}
+        #p2:hover{color: hotpink;}
+
+        #b1:hover{background-color: aquamarine;}
+        #b2:active{background-color: crimson;}
+    </style>
+    <div id="reaction">
+        <P id="p1">클릭 -> 배경색</P>
+        <p id="p2">마우스 올리면 -> 글자색</p>
+    </div>
+    <h1>반응 선택자 연습문제</h1>
+    <input type="button" value="버튼1" id="b1"><br>
+    <button type="button" id="b2">버튼2</button><br><br>
+    <h3>상태 선택자</h3>
+    <style>
+        input[name="user_id"]:focus{background-color: rgb(127, 127, 211);}
+        input[type="text"]:disabled{background-color: crimson;}
+    </style>
+    <div id="condition">
+        <input type="text" name="user_id"><br>
+        <input type="text" name="user_name" disabled>
+    </div>
 </body>
 </html>
