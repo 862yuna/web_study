@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 태그 접근</title>
+</head>
+<body>
+    <h2>id 기준 접근</h2>
+    <div id="idTarget">
+        변경전
+    </div>
+    <button type="button" onclick="turnRed();">
+        빨갛게
+    </button>
+    <script>
+        function turnRed(){
+            var it = document.getElementById('idTarget');
+            it.style.color ='red';
+        }
+    </script>
+    <h2>class 기준 접근</h2>
+    <P class="a">P1</P>
+    <span class="b a">span1</span>
+    <p class="b">p2</p>
+    <input type="button" value="a만" onclick="changeOnlyA();">
+    <script>
+        function changeOnlyA(){
+            var el = document.getElementsByClassName('a');
+            console.log(el);
+            // 1. 인덱스 기준
+            // el[0].style.color = 'hotpink';
+            // 2. 반복문
+            for(var i = 0 ; i < el.length ; i++){
+                // el[i].style.color = 'green';
+                if(i == 0){
+                    el[i].style.color = 'red';
+                }else{
+                    el[i].style.color = 'green';
+                }
+            }
+        }
+    </script>
+    <h2>태그명 기준 접근</h2>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>ES6</li>
+        </ul>
+        <button type="button" onclick="changeJSBlue();">
+            JS 좋아!
+        </button>
+    <script>
+        function changeJSBlue(){
+            var tagEl = document.getElementsByTagName('li');
+            console.log(tagEl);
+            tagEl[2].style.color = 'blue';
+        }
+    </script>
+    <h2>name 기준 접근</h2>
+    <label>
+        <input type="checkbox" name="food" value="1">
+        짜장면
+    </label><br>
+    <label>
+        <input type="checkbox" name="food" value="2">
+        짬뽕
+    </label><br>
+    <label>
+        <input type="checkbox" name="food" value="3">
+        군만두
+    </label><br>
+    <button type="button" onclick="addReview();">
+        리뷰 이벤트 참여
+    </button>
+    
+    <script>
+        function addReview(){
+            var nameEl = document.getElementsByName('food');
+            console.log(nameEl);
+            // nameEl[2].checked = true;
+            var checkStatus = nameEl[2].checked;
+            console.log(checkStatus);
+            if(checkStatus){
+                // 체크 되어 있다면
+                nameEl[2].checked = false;
+            }else{
+                // 체크 되어 있지 않다면
+                nameEl[2].checked = true;
+            }
+        }
+    </script>
+    <h2>선택자 기준 접근</h2>
+    <button type="button" onclick="practiceQuery();">
+        접근하기
+    </button>
+    <script>
+        function practiceQuery(){
+            var one = document.querySelector('#idTarget');
+            // document.getElementById('idTarget');
+            one.style.color = 'orange';
+            var many = document.querySelectorAll('.b');
+            many[0].style.color='red';
+        }
+    </script>
+    <h2>value 속성 사용하기</h2>
+    <input type="text" id="userName">
+    <input type="button" value="가져오기" id="getNameBtn">
+    <button type="button" id="setNameBtn">바꿔주기</button>
+    <script>
+            document.getElementById('getNameBtn').onclick = function(){
+                var userName = document.getElementById('userName').value;
+                alert(userName);
+            }
+            document.getElementById('setNameBtn').onclick = function(){
+                document.getElementById('userName').value = '육성재';
+                // document.getElementById('userName').value += '육성재';
+            }
+    </script>
+    <h2>style 속성 활용하기</h2>
+    <style>
+        #styleBtn{
+            background-color: cornflowerblue;
+        }
+    </style>
+    <input id="styleBtn" type="button" value="스타일 변신" 
+        onclick="changeStyle();">
+
+    <script>
+        function changeStyle(){
+            // console.log('함수 연결 확인');
+            var st1 
+            = document.getElementById('styleBtn').style.backgroundColor;
+            console.log(st1);
+
+            var ele2 = document.getElementById('styleBtn');
+            var st2 = getComputedStyle(ele2).backgroundColor;
+            console.log(st2);
+
+            ele2.style.backgroundColor = 'gold';
+        }
+    </script>
+    <h3>연습문제</h3>
+    <input type="color" id="color1">
+    <button type="button" id="colorBtn">
+        변경
+    </button><br><br>
+    <div id="colorChange" style="width: 100px; height: 100px; background-color: lightpink;">
+    </div>
+    <script>
+        document.getElementById('colorBtn').onclick = function(){
+            var col1 = document.getElementById('color1').value;
+            console.log(col1);
+            var col2 = document.getElementById('colorChange');
+            col2.style.backgroundColor = col1;
+        }   
+    </script>
+    <h3>문제 2. 버튼에 따른 크기 조절</h3>
+    <input type="button" value="50X50" id="50">
+    <input type="button" value="100X100" id="100">
+    <input type="button" value="200X200" id="200">
+    <div id="boxSize" style="width: 50px; height: 50px; background-color: black;" ></div>
+    <script>
+        document.getElementById('50').onclick = function(){
+            var s = document.getElementById('boxSize');
+            s.style.width = '50px';
+            s.style.height = '50px';
+        }
+        document.getElementById('100').onclick = function(){
+            var s = document.getElementById('boxSize');
+            s.style.width = '100px';
+            s.style.height = '100px';
+        }
+        document.getElementById('200').onclick = function(){
+            var s = document.getElementById('boxSize');
+            s.style.width = '200px';
+            s.style.height = '200px';
+        }
+    </script>
+    <h2>innerHTML</h2>
+    <div id="test1">
+        <p>Hello!</p>
+    </div>
+    <div id="test2"> 
+        안녕하세요~
+    </div>
+    <input type="button" value="가져오기" onclick="getTag();">
+    <input type="button" value="바꿔주기" onclick="setTag();">
+    <script>
+        function getTag(){
+            var t1 = document.getElementById('test1').innerHTML;
+            var t2 = document.getElementById('test2').innerHTML;
+            console.log(t1);
+            console.log(t2);
+        }
+        function setTag(){
+            document.getElementById('test1').innerHTML += '<h1>Ohhhh</h1>';
+        }
+    </script>
+    <h1>HTML 태그에 접근 테스트</h1>
+    <!-- <form>
+        <label for="customer">구매자 : </label>
+        <input type="name" id="customer"
+            placeholder="구매자 이름을 입력하세요"><br>
+        <label for="product">상품명 : </label>
+        <input type="text" id="product"
+            placeholder="구매 상품명을 입력하세요"><br>
+        <label for="">가격 : </label>
+        <input type="text" id="price" name="priceP"
+            placeholder="구매 가격을 입력하세요"><br>    
+        <button type="button" id="printBtn"
+            onclick="clickBtn();">
+            입력값 출력하기
+        </button><br><br>
+        <div id="textBox" name="textBox2"
+        style="width: 400px; height: 200px; background-color: cornsilk;">
+        </div>
+    </form>
+    <script>
+        function clickBtn(){
+            var c1 = document.getElementsByTagName('input').value;
+            var c2 = document.getElementById('product').value;
+            var c3 = document.getElementsByName('priceP').value;
+            console.log(c1);
+            document.getElementsByTagName('div').innerHTML = c1[0].value;
+            document.getElementById('textBox').innerHTML = c2;
+            document.getElementsByName('textBox2').innerHTML = c3;
+
+        }
+    </script> -->
+    <h1>HTML 태그에 접근 테스트</h1>
+    <form action="#">
+        <label style="color: black;" for="text1">구매자 : </label>
+        <input id="text1" type="text" placeholder="구매자 이름을 입력하세요.">
+        <br>
+        <label for="text2">상품명 : </label>
+        <input id="text2" type="text" placeholder="구매 상품명을 입력하세요.">
+        <br>
+        <label for="text3">가격 : </label>
+        <input id="text3" type="text" placeholder="구매 가격을 입력하세요.">
+        <br><br>
+        <button type="button" onclick="writeStr();">입력값 출력하기</button>
+        <br><br>
+        <div style="width: 400px; height: 250px; background-color: rgb(248, 246, 210); z-index: -1;">
+            <div id="div1">구매자 : </div>
+            <div id="div2">상품명 : </div>
+            <div id="div3">가격 : </div>
+        </div>
+        <br>
+        <script>
+            function writeStr(){
+                var strInput1 = document.getElementsByTagName('input');
+                // console.log(strInput[0].value);
+                var strDiv1 = strInput1[0].value;
+                // console.log(strDiv);
+                // document.getElementById('div1').value += '1';
+                console.log(document.getElementById('div1').innerHTML += strDiv1);
+                // alert(strVar[0].value);
+                var strInput2 = document.getElementById('text2');
+                var strDiv2 = strInput2.value;
+                console.log(document.getElementById('div2').innerHTML += strDiv2);
+                var strInput3 = document.getElementById('text3');
+                var strDiv3 = strInput3.value;
+                console.log(document.getElementById('div3').innerHTML += strDiv3);
+            }
+        </script>
+    </form>
+</body>
+</html>
