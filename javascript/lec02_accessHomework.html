@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><lec02_access class="homework"></lec02_access></title>
+</head>
+<body>
+    <h1>HTML 태그에 접근 테스트</h1>
+    <!-- <form action="#">
+        <label style="color: black;" for="text1">구매자 : </label>
+        <input id="text1" type="text" placeholder="구매자 이름을 입력하세요.">
+        <br>
+        <label for="text2">상품명 : </label>
+        <input id="text2" type="text" placeholder="구매 상품명을 입력하세요.">
+        <br>
+        <label for="text3">가격 : </label>
+        <input id="text3" type="text" placeholder="구매 가격을 입력하세요.">
+        <br><br>
+        <button type="button" onclick="writeStr();">입력값 출력하기</button>
+        <br><br>
+        <div style="width: 400px; height: 250px; background-color: rgb(248, 246, 210); z-index: -1;">
+            <div id="div1">구매자 : </div>
+            <div id="div2">상품명 : </div>
+            <div id="div3">가격 : </div>
+        </div>
+        <br>
+        <script>
+            function writeStr(){
+                var strInput1 = document.getElementsByTagName('input');
+                // console.log(strInput[0].value);
+                var strDiv1 = strInput1[0].value;
+                // console.log(strDiv);
+                // document.getElementById('div1').value += '1';
+                console.log(document.getElementById('div1').innerHTML += strDiv1);
+                // alert(strVar[0].value);
+                var strInput2 = document.getElementById('text2');
+                var strDiv2 = strInput2.value;
+                console.log(document.getElementById('div2').innerHTML += strDiv2);
+                var strInput3 = document.getElementById('text3');
+                var strDiv3 = strInput3.value;
+                console.log(document.getElementById('div3').innerHTML += strDiv3);
+            }
+        </script>
+    </form> -->
+    <form>
+        <label for="customer">구매자 : </label>
+        <input type="text" id="customer" 
+            placeholder="구매자 이름을 입력하세요"><br>
+        <label for="product">상품명 : </label>
+        <input type="text" id="product" 
+            placeholder="구매 상품명을 입력하세요"><br>
+        <label for="priceP">가격 : </label>
+        <input type="text" id="priceP" 
+            placeholder="구매 가격을 입력하세요"><br>
+        <button type="button" id="printBtn" onclick="clickBtn();">
+            입력값 출력하기
+        </button>
+        <br><br>
+        <div style="width: 400px; height: 200px; background-color: cornsilk;">
+            <div>구매자 : </div>
+            <div>상품명 : </div>
+            <div>가격 : </div>
+        </div><br>
+        <script>
+            function clickBtn(){
+                var getStr1 = document.getElementsByTagName('input');
+                var setStr1 = getStr1[0].value;
+                document.getElementById('div1').innerHTML += strDiv1
+            }
+        </script>
+    </form>
+</body>
+</html>

@@ -188,13 +188,18 @@
     <input type="button" value="바꿔주기" onclick="setTag();">
     <script>
         function getTag(){
-            var t1 = document.getElementById('test1').innerHTML;
-            var t2 = document.getElementById('test2').innerHTML;
-            console.log(t1);
-            console.log(t2);
+            // var t1 = document.getElementById('test1').innerHTML;
+            // var t2 = document.getElementById('test2').innerHTML;
+            // console.log(t1);
+            // console.log(t2);
+            var t3 = document.getElementById('test1').innerText;
+            var t4 = document.getElementById('test2').innerText;
+            console.log(t3);
+            console.log(t4);
         }
         function setTag(){
-            document.getElementById('test1').innerHTML += '<h1>Ohhhh</h1>';
+            // document.getElementById('test1').innerHTML += '<h1>Ohhhh</h1>';
+            document.getElementById('test1').innerText = '<h1>Ohhhh</h1>';
         }
     </script>
     <h1>HTML 태그에 접근 테스트</h1>
@@ -228,42 +233,5 @@
 
         }
     </script> -->
-    <h1>HTML 태그에 접근 테스트</h1>
-    <form action="#">
-        <label style="color: black;" for="text1">구매자 : </label>
-        <input id="text1" type="text" placeholder="구매자 이름을 입력하세요.">
-        <br>
-        <label for="text2">상품명 : </label>
-        <input id="text2" type="text" placeholder="구매 상품명을 입력하세요.">
-        <br>
-        <label for="text3">가격 : </label>
-        <input id="text3" type="text" placeholder="구매 가격을 입력하세요.">
-        <br><br>
-        <button type="button" onclick="writeStr();">입력값 출력하기</button>
-        <br><br>
-        <div style="width: 400px; height: 250px; background-color: rgb(248, 246, 210); z-index: -1;">
-            <div id="div1">구매자 : </div>
-            <div id="div2">상품명 : </div>
-            <div id="div3">가격 : </div>
-        </div>
-        <br>
-        <script>
-            function writeStr(){
-                var strInput1 = document.getElementsByTagName('input');
-                // console.log(strInput[0].value);
-                var strDiv1 = strInput1[0].value;
-                // console.log(strDiv);
-                // document.getElementById('div1').value += '1';
-                console.log(document.getElementById('div1').innerHTML += strDiv1);
-                // alert(strVar[0].value);
-                var strInput2 = document.getElementById('text2');
-                var strDiv2 = strInput2.value;
-                console.log(document.getElementById('div2').innerHTML += strDiv2);
-                var strInput3 = document.getElementById('text3');
-                var strDiv3 = strInput3.value;
-                console.log(document.getElementById('div3').innerHTML += strDiv3);
-            }
-        </script>
-    </form>
 </body>
 </html>
