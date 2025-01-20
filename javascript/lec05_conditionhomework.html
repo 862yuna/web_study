@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>condition_homework</title>
+</head>
+<body>
+    <h1>날씨 확인</h1>
+    <label>계절</label>
+    <input type="radio" id="spring" name="weather" value="1">
+    <label for="spring">봄</label>
+    <input type="radio" id="summer" name="weather" value="2">
+    <label for="summer">여름</label>
+    <input type="radio" id="autumn" name="weather" value="3">
+    <label for="autumn">가을</label>
+    <input type="radio" id="winter" name="weather" value="4">
+    <label for="winter">겨울</label><br>
+
+    <label for="temperature">기온</label>
+    <input type="text" id="temperature">
+    <button type="button" onclick="printWeather();">확인</button>
+
+    <script>
+        function printWeather(){
+            let season =Number(document.querySelector('input[name="weather"]:checked').value);
+            // console.log(season);
+            let tem = Number(document.getElementById('temperature').value);
+            // console.log(tem,typeof(tem));
+            switch(season){
+                case 1 : alert('봄'); break;
+                case 2 : 
+                        if(tem >= 35){
+                            alert('여름 폭염경보');
+                        }else if(tem >= 33){
+                            alert('여름. 폭염주의보');
+                        }else{
+                            alert('여름');
+                        }
+                        break;
+                case 3 : alert('가을'); break;   
+                case 4 : 
+                        if(tem <= -15){
+                            alert('겨울 한파경보');
+                        }else if(tem <= -12){
+                            alert('겨울 한파주의보');
+                        }else{
+                            alert('겨울');
+                        }
+            }
+        }
+    </script>
+</body>
+</html>

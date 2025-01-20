@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제어문 : 조건문, 반복문</title>
+</head>
+<body>
+<h1>if문</h1> 
+<input type="number" id="ifNum" style="background-color: yellow;">
+<input type="button" value="양수 vs 음수" onclick="checkNum();"><br><br>
+<script>
+    function checkNum(){
+        let num = Number(document.getElementById('ifNum').value);
+        // let num1 = document.getElementById('ifNum');
+        // num1 = num1.value;
+        // num1 = Number(num1);
+
+        if(num > 0 ){
+            alert('양수');
+        }else if(num < 0){
+            alert('음수');
+        }else{
+            alert('0');
+        }
+    }
+</script>
+<h1>연습문제</h1>
+<label for="loginId">ID : </label>
+<input type="text" id="loginId"><br>
+<label for="loginPw">PW : </label>
+<input type="text" id="loginPw">
+<button type="button" id="login" onclick="loginMember();">로그인</button>
+<script>
+    function loginMember(){
+        let userId = document.getElementById('loginId').value;
+        let userPw = document.getElementById('loginPw').value;
+
+        if(userId == 'admin' && userPw == 'admin1234'){
+            alert('로그인 되었습니다.');
+        }else{
+            alert('아이디 혹은 비밀번호가 일치하지 않습니다.');
+        }
+    }
+</script>
+<h1>switch문</h1>
+<input type="button" value="switch확인" onclick="switchTest();">
+<script>
+    function switchTest(){
+        let num = Number(document.querySelector('#ifNum').value);
+        
+        switch(num){
+            case 1 : alert('1이네영'); break;
+            case 2 : alert('2입니댜'); break;
+            default : alert('1도 2도 아니네효');
+        }
+    }
+</script>
+<h1>연습문제</h1>
+<select onchange="menu();" id="menu">
+    <option value="0">선택하기</option>
+    <option value="1">돼지두루치기</option>
+    <option value="2">마라샹궈</option>
+    <option value="3">참치주먹밥</option>
+</select>
+<script>
+    function menu(){
+        let num = Number(document.getElementById('menu').value);
+        console.log(typeof(num));
+        switch(num){
+            case 1 : alert('돼지두루치기 15000원'); break;
+            case 2 : alert('마라샹궈 18000원'); break;
+            case 3 : alert('참치주먹밥 5000원'); break;
+        }
+    }
+</script>
+<h1>for문</h1>
+<input type="button" value="반복하기" onclick="loopFunc();">
+<div id="resultDiv"></div>
+<script>
+    function loopFunc(){
+        document.getElementById('resultDiv').innerHTML = '';
+        for(let i = 0; i < 10 ; i++){
+            document.getElementById('resultDiv').innerHTML = '<h6>안녕하세요</h6>'
+        }
+    }
+</script>
+<h1>중첩 반복문</h1>
+<button type="button" onclick="enterClass();">교실 입장</button>
+<p>총 2개의 교실, 하나의 교실에 3명의 학생 입장</p>
+<script>
+    function enterClass(){
+        for(let i = 0; i < 2 ; i++){
+            // console.log("교실"+ (i+1)+"번 입장");
+            console.log(`교실 ${i+1}번 입장`);
+            for(let j = 0; j < 3 ; j++){
+                console.log(`학생 ${j+1+(3*i)}`);
+            }
+            console.log(`교실 ${i+1}번 퇴장`);
+        }
+    }
+</script>
+<h3>연습문제</h3>
+<h1>홀수번째</h1>
+<h1>짝수번째</h1>
+<button type="button" onclick="changeColor();">배경추가</button>
+<script>
+    function changeColor(){
+        let x = document.getElementsByTagName('h1');
+        for(let i = 0; i < x.length; i+=2){
+            x[i].style.backgroundColor='lightpink';
+        }
+        for(let i = 1; i<x.length; i+=2){
+            x[i].style.backgroundColor = 'lightblue';
+        }
+    }
+</script>
+<h1>break문</h1>
+<input type="button" value="break 동작" onclick="breakTest();">
+<script>
+    function breakTest(){
+        // 외부 반복문 : 1,2,3
+        // 내부 반복문 : 1,2
+        for(let i = 1; i <= 3; i++){
+            console.log('A');
+            for(let j = 1;j <=2 ; j++){
+                console.log('B');
+                // 1. 내부 반복문에 break문
+                // break;
+            }
+            console.log('C');
+            // 2. 외부 반복문에 break문 
+            break;
+        }
+    }
+</script>
+<h1>연습문제 - 면도기공장</h1>
+<label for="shaving">생산 개수 : </label>
+<input type="number" id="shaving">
+<button type="button" onclick="produce();">생산</button><br>
+<div id="selectImg"></div>
+<script>
+    function produce(){
+        let num = document.getElementById('shaving').value;
+        for(let i = 0;i<num;i++){
+            document.getElementById('selectImg').innerHTML += 
+            '<img src="../resources/shaving.png">'
+            for(let j = 0;j < 2;j++){
+                document.getElementById('selectImg').innerHTML +=
+                '<img src="../resources/knife.png">'
+                break; // -> 쉐이빙폼1, 면도기1
+            }
+            document.getElementById('selectImg').innerHTML += '<br>'
+            // break; // 어떤 숫자를 입력해도 항상 하나의 면도세트만 생산.(쉐이빙폼1,면도기2)
+        }
+    }
+</script>
+<h1>while문</h1>
+<input type="button" value="while동작" onclick="whileFunc();">
+<script>
+    function whileFunc(){
+        let b = 10;
+        // while(b >= 5){
+        //     console.log(b);
+        //     b--;
+        // }
+        while(true){
+            b--;
+            if(b == 5){
+                break;
+            }
+
+        }
+    }
+</script>
+<script>
+    let WCnt = 10;
+    do{
+        console.log(WCnt);
+        WCnt--;
+    }
+    while(0 < WCnt && WCnt < 10);
+</script>
+<h1>연습문제 - 10보다 작은 숫자</h1>
+<input type="number" id="number">
+<button type="button" onclick="printNum();">출력하기</button>
+<div id="resultPrint"></div>
+<script>
+    function printNum(){
+        let n = document.getElementById('number').value;
+        document.getElementById('resultPrint').innerHTML = '';
+    
+        do{
+            document.getElementById('resultPrint').innerHTML += n++;
+            document.getElementById('resultPrint').innerHTML += '<br>'
+        }
+        while(n<=10); 
+    }
+</script>
+<h1 onclick="continueTest();">continue</h1>
+<script>
+    function continueTest(){
+        for(let i = 1; i <= 10;i++){
+            if(i % 2 == 0){
+                continue;
+            }
+            console.log(i+"출력");
+        }
+    }
+</script>
+</body>
+</html>
