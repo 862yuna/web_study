@@ -22,16 +22,16 @@
                 <input type="text" id="p_name"><br>
             </li>
             <li>
-                <label>납품수량 : </label>
-                <input type="number" min="100" placeholder="최소 100">
+                <label for="prdAmount">납품수량 : </label>
+                <input type="number" id="prdAmount" min="100" placeholder="최소 100">
             </li>
             <li>
-                <label>납품등급 :</label>
-                <input type="range" min="1" max="10" step="1">
+                <label for="product_grade">납품등급 :</label>
+                <input type="range" id="product_grade" min="1" max="10" step="1" value="5">
             </li>
             <li>
-                <label>기타사항 : </label>
-                <textarea cols="20" rows="3"></textarea>
+                <label for="product_etc">기타사항 : </label>
+                <textarea id="product_etc" cols="20" rows="3"></textarea>
             </li>
         </ul>
     </fieldset>
@@ -100,6 +100,7 @@
     <h1>백엔드 개발자 지원서</h1>
     <p>Java, Spring, DataBase에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
     <hr>
+    <form method="get" action="#">
     <table>
         <tr>
             <th>개인정보</th>
@@ -152,8 +153,14 @@
             <td></td>
             <td></td>
         </tr>
+        <tr>
+            <td colspan="3">
+                <button type="submit">접수하기</button>
+                <button type="reset">다시쓰기</button>
+            </td>
+        </tr>
     </table>
-    <button type="submit">접수하기</button>
-    <button type="reset">다시쓰기</button>
+    
+</form>
 </body>
 </html>

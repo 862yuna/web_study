@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>condition_homework</title>
+    <title>조건문, 반복문 과제</title>
 </head>
 <body>
-    <h1>날씨 확인</h1>
+    <h1>조건문 과제</h1>
+    <h2>날씨 확인</h2>
     <label>계절</label>
     <input type="radio" id="spring" name="weather" value="1">
     <label for="spring">봄</label>
@@ -50,13 +51,107 @@
             }
         }
     </script>
-    <h1>스폰지밥, 뚱이, 징징이</h1>
-    <select>
+    <h2>스폰지밥, 뚱이, 징징이</h2>
+    <select id="selectImg" onchange="changeImg();">
         <option value="0">선택하기</option>
         <option value="1">스폰지밥</option>
         <option value="2">뚱이</option>
         <option value="3">징징이</option>
     </select>
-    <img src="../resources/sponge.png" style="width: 150px;">  
+    <!-- <div id="imgDiv"></div> -->
+    <img id="character" src="../resources/sponge.png" style="width: 150px; height: 150px; border: solid lightgreen; border-radius: 150px;">
+    <!-- <img src="../resources/dung.png" style="width: 150px; height: 150px; border: solid lightgreen; border-radius: 150px; "> -->
+    <!-- <img src="../resources/징징이.png" style="width: 150px; height: 150px; border: solid lightgreen; border-radius: 150px; "> -->
+    <script>
+        function changeImg(){
+            let imgNum = Number(document.getElementById('selectImg').value);
+            console.log(imgNum);
+            // document.getElementById('character').src = "";
+            switch(imgNum){
+                case 1 : document.getElementById('character').src="../resources/sponge.png";break;
+                case 2 : document.getElementById('character').src="../resources/dung.png";break;
+                case 3 : document.getElementById('character').src = "../resources/징징이.png";break;
+                // default : document.getElementById('character').src="../resources/sponge.png";
+            }
+        }
+    </script>
+    <h1>반복문 과제</h1>
+    <h2>콤보세트</h2>
+    <label for="orderCnt();">개수 : </label>
+    <input type="number" id="orderCnt">
+    <button type="button" onclick="order();">주문</button>
+    <div id="orderResult"></div>
+    <!-- <img src="../resources/popcorn.png" style="width: 50px;"> -->
+    <!-- <img src="../resources/coke.png" style="width: 50px;"> -->
+    <script>
+        function order(){
+            let combo = Number(document.getElementById('orderCnt').value);
+            console.log(typeof(combo));
+            for(let i = 0;i<combo;i++){
+                document.getElementById('orderResult').innerHTML += 
+                '<img src="../resources/popcorn.png" style="width: 50px;">';
+                for(let j = 0; j<2;j++){
+                    document.getElementById('orderResult').innerHTML += 
+                    '<img src="../resources/coke.png" style="width: 50px;">';
+                }
+                document.getElementById('orderResult').innerHTML += '<br>';
+            }
+        }
+    </script>
+    <h2>테이블 만들기</h2>
+    <h3>행 열 갯수 각각 입력받아 테이블 만들기</h3>
+    <button type="button" onclick="makeTable();">테이블 생성</button>
+    <div id="tableSet"></div>
+    <table border="1" id="generate">
+        
+    </table>
+    <script>
+        function makeTable(){
+            let tableRow = prompt('테이블 행의 갯수는?');
+            let tableCol = prompt('테이블 열의 갯수는?');
+            tableRow = Number(tableRow);
+            tableCol = Number(tableCol);
+            // console.log(tableRow,tableCol,typeof(tableRow));
+            let result = "";
+            for(let i = 0;i<tableRow;i++){
+                result += '<tr>';
+                    for(let j = 0; j < tableCol ; j++){
+                        result += `<td>${j+1+(tableCol*i)}</td>`;
+                    }
+                    result += '</tr>';
+            }
+            document.getElementById('generate').innerHTML += result;
+        }
+    </script>
+    <h2>철수의 귤농장</h2>
+    <button type="button" onclick="farm();">체험시작</button>
+    <div id="tangerine"></div>
+    <!-- <img src="../resources/gul.png"> -->
+    <script>
+        let weight = 0;
+        function farm(){
+
+            while(true){
+                weight += 10;
+                document.getElementById('tangerine').innerHTML += 
+                `귤 ${weight}g <br><img src="../resources/gul.png"><br>`;
+                
+                if(weight == 200){
+                document.getElementById('tangerine').innerHTML +=
+                `<br><h2>체험 종료!!</h2>`;
+                break;
+                }
+            }
+            // if(weight < 200){
+            //     document.getElementById('tangerine').innerHTML +=
+            //     `귤 ${weight+=10}g <br><img src="../resources/gul.png"><br>`;
+                
+            // }else if(weight == 200){
+            //     document.getElementById('tangerine').innerHTML +=
+            //     `<br><h2>체험 종료!!</h2>`;
+            //     alert('귤따기 끗');
+            // }
+        }
+    </script>
 </body>
 </html>
