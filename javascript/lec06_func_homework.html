@@ -11,22 +11,162 @@
     #jing{
         width:150px; height: 150px;
         border: 4px dotted green;
-        /* border-radius: 150px; */
         border-radius: 40px;
     }
 </style>
-<img id="jing" src="../resources/징징이.webp"><br>   
+<img id="jing" src="../resources/징징이.png"><br>   
 <input type="range" id="goRound"
-min="0" max="75" step="5" onchange="radiusAdd();">
-<label id="roundSize"></label>
+min="0" max="75" step="5" onchange="radiusAdd(this.value);">
+<span id="rangeMove">40</span>
 
 <script>
     let radiusAdd = function(round){
-        let moveRound = document.getElementById('goRound').value;
-        let j = document.getElementById('jing');
-        j.style.borderRadius = moveRound;
+        document.getElementById('rangeMove').innerText = round;
+        document.getElementById('jing').style.borderRadius = round+'px';
+    
         // 아 진짜 모르겠다ㅏㅏㅏㅏㅏㅏㅏ
     }
 </script>
+<h1>2. 선택 검색하기</h1>
+<style>
+    fieldset{
+        text-align: center;
+        background-color: rgb(205, 204, 204);
+    }
+    .searchDiv{
+        background-color: gold;
+        display: none;
+        padding: 5px;
+    }
+</style>
+<fieldset>
+    <legend>검색할 항목을 선택하세요</legend>
+    <input type="radio" id="title" name="searchItem" onclick="searchTitle();">
+    <label for="title">제목</label>
+    <input type="radio" id="date" name="searchItem" onclick="searchDate();">
+    <label for="dateCheck">날짜</label>
+    <input type="radio" id="writer" name="searchItem" onclick="searchWriter();">
+    <label for="writer">작성자</label>
+</fieldset>
+<hr>
+<div class="searchDiv" id="titleDiv">
+    <span>검색할 제목을 입력하세요 : </span><br>
+    <input type="text">
+    <button type="button">검색</button>
+</div>
+<div class="searchDiv" id="dateDiv">
+    <span>검색할 날짜를 입력하세요 : </span><br>
+    <input type="date"> ~ <input type="date">
+    <button type="button">검색</button>
+</div>
+<div class="searchDiv" id="writerDiv">
+    <span>검색할 작성자를 입력하세요 : </span><br>
+    <input type="text">
+    <button type="button">검색</button>
+</div>
+<script>
+    const searchTitle = function(){
+        document.querySelector('#titleDiv').style.display = 'block';
+        document.querySelector('#dateDiv').style.display = 'none';
+        document.querySelector('#writerDiv').style.display = 'none';
+
+    }
+    const searchDate = function(){
+        document.querySelector('#dateDiv').style.display = 'block';
+
+        document.querySelector('#titleDiv').style.display = 'none';
+        document.querySelector('#writerDiv').style.display = 'none';
+    }
+    const searchWriter = function(){    
+        document.querySelector('#writerDiv').style.display = 'block';
+
+        document.querySelector('#titleDiv').style.display = 'none';
+        document.querySelector('#dateDiv').style.display = 'none';
+    }
+</script>
+<h1>BMI 지수</h1>
+<style>
+    #result_div{ 
+        background-color: gainsboro;
+        width: 560px;height: 90px;
+    }
+    li:first-child{ background-color: skyblue; }
+    li:nth-child(2){ background-color: yellowgreen; }
+    li:nth-child(3){ background-color: gold; }
+    li:nth-child(4){ background-color: orange; }
+    li:last-child{background-color: crimson; }
+</style>
+<h1>BMI지수 도출</h1>
+    <h2>BMI지수 = 몸무게kg / (키m * 키m)</h2>
+    <ul>
+        <li>18.5 미만 : 저체중</li>
+        <li>18.5 이상 24.9 미만 : 표준</li>
+        <li>25 이상 29.9 미만 : 과체중</li>
+        <li>30 이상 34.9 미만 : 비만</li>
+        <li>35이상 : 고도비만</li>
+    </ul>
+    <p>
+        사용자가 아래 입력창에 몸무게와 키를 입력하면 회색창에 BMI지수가 출력되도록 하세요.<br>
+        그리고, BMI 지수에 따라 회색창의 배경색을 li의 배경색과 같은 색으로 변경하세요.
+    </p>
+    <hr>
+    <p>
+        * Hint : 이 문제는 세단계로 풀어보세요. <br>
+        <mark>Step 1.</mark> 출력 버튼을 클릭했을 때 호출할 함수 하나(printDiv)로 기능을 만드세요.<br>
+        <mark>Step 2.</mark> printDiv는 두가지 역할을 수행하고 있습니다. <br>
+        BMI 지수를 계산하는 것, BMI 지수 결과를 기준으로 배경색을 변경하는 것이 그것이죠.<br>
+        BMI 지수 결과를 매개변수로 받아서 result_div의 배경색을 변경하는 함수(changeBack)을 만드세요.<br>
+        <mark>Step 3.</mark> printDiv 함수에서 해당 기능을 changeBack 함수의 호출구문으로 변경하세요.
+    </p>
+    <table>
+        <tr>
+            <td>
+                <label for="user_weight">몸무게 : </label>
+            </td>
+            <td>
+                <input type="number" id="user_weight" placeholder="kg단위로 입력하세요.">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="user_height">키 : </label>
+            </td>
+            <td>
+                <input type="number" id="user_height" placeholder="m단위로 입력하세요.">
+                <!-- 버튼에 onclick 속성을 추가하고 함수를 할당하세요. -->
+                <button onclick="printDiv();">출력</button>
+            </td>
+        </tr>
+    </table>
+    <div id="result_div">
+
+    </div>
+    <script>
+        let resultBmi;
+        const printDiv = function(){
+            const userWeight = Number(document.getElementById('user_weight').value);
+            const userHeight = Number(document.getElementById('user_height').value);
+            const result = userWeight / (userHeight*userHeight);
+            // console.log(result);
+            resultBmi = document.getElementById('result_div');
+            resultBmi.innerHTML = result;
+            // let change = changeBack(result);
+            changeBack(result);
+
+        }
+        const changeBack = function(calResult){
+            if(calResult >= 35){
+                resultBmi.style.backgroundColor = 'crimson';
+            }else if(30 <= calResult && calResult <34.9){
+                resultBmi.style.backgroundColor = 'orange';
+            }else if(25 <= calResult && calResult <29.9){
+                resultBmi.style.backgroundColor = 'gold';
+            }else if(18.5 <= calResult && calResult < 24.9){
+                resultBmi.style.backgroundColor = 'yellowgreen';
+            }else{
+                resultBmi.style.backgroundColor = 'skyblue';
+            }
+        }
+    </script>
 </body>
 </html>
