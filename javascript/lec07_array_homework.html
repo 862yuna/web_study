@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>우리반 성적</h2>
+    <label>평균 : </label>
+    <span id="resultAvg"></span><br>
+    <label>성적</label>
+    <input type="number" id="score">
+    <button type="button" onclick="scoreAvg();">추가</button>
+    <script>
+        let scoreArray = new Array();
+        const scoreAvg = function(){
+            let scr = Number(document.getElementById('score').value);
+            scoreArray.push(scr);
+            let sum = 0;
+            let avg = 0;
+            for(let i = 0; i<scoreArray.length;i++){
+                sum += scoreArray[i];
+            }
+            console.log(sum);
+            avg = sum / scoreArray.length;
+            document.getElementById('resultAvg').innerText = avg;
+        }
+    </script>
+</body>
+</html> 

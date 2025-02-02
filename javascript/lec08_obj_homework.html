@@ -6,7 +6,17 @@
     <title>객체 과제</title>
 </head>
 <body>
-    <h1>출석부</h1>
+    <h2>1. 출석부</h2>
+    <!-- <style>
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        table th{
+            background-color: rgb(202, 202, 202);
+        }
+    </style> -->
+    <form>
     <fieldset>
         <legend>강아지 정보</legend>
         <label for="petName">이름</label>
@@ -19,6 +29,19 @@
     <button type="button" id="register" onclick="insertPet();">등록</button>
     <button type="button" id="confirm" onclick="selectPet();">확인</button>
     <div id="myPet"></div>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>특징</th>
+            </tr>
+        </thead>
+        <tbody id="insertPet">
+
+        </tbody>
+    </table>
+    </form>
     <script>
         let pet = new Object();
         let insertPet = function(){
@@ -31,7 +54,7 @@
                 age : age,
                 personality : personality
             }
-            // console.log(pet);
+            console.log(pet);
         }
 
         let selectPet = function(){
@@ -39,17 +62,31 @@
             document.getElementById('petAge').value= '';
             document.getElementById('personality').value='';
 
-            document.getElementById('myPet').innerHTML += 
-            `<table border="1" >
-                <tr>
+            document.getElementById('insertPet').innerHTML += 
+                `<tr>
                     <th>${pet.name}</th>
                     <th>${pet.age}</th>
                     <th>${pet.personality}</th>
-                </tr>       
-            </table>    `
+                </tr>`
 
         }
 
+    </script>
+    <h2>2. 학생 정보</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        
     </script>
 </body>
 </html>
