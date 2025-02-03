@@ -174,11 +174,20 @@
         })
     </script>
     <h2>3. 출석부</h2>
+    <style>
+        table{
+            text-align: center;   
+        }
+    </style>
     <button id="attendance">출력</button>
     <div>
-        <table>
-            <thead>
-
+        <table border="1">
+            <thead id="info">
+                <tr>
+                    <th>이름</th>
+                    <th>나이</th>
+                    <th>주소</th>
+                </tr>
             </thead>
             <tbody>
 
@@ -193,11 +202,48 @@
                         {name : '최철수',age : 40, address : '광주'}
             ];
             $('#attendance').on('click',function(){
+                $('div>table>tbody').append('');
                 $.each(arr,function(key,value){
-                    $('div>table>thead').append(`<tr><td>${key}</td></tr>`);
+                    // $('#info').append(`<th>이름</th><th>나이</th><th>주소</th>`);
                     $('div>table>tbody').append(`<tr>
-                    <td>${value}</td>
+                    <td>${value.name}</td><td>${value.age}</td><td>${value.address}</td>
                     </tr>`);
+                });
+            })
+        })
+    </script>
+    <h2>4. 과일 가게 할인</h2>
+    <button id="discount_btn">할인 적용</button>
+    <div id="fruit_div"></div>
+    <hr>
+    <div>
+        할인 적용 가격
+        <span id="fruitDiscount"></span>
+    </div>
+    <script>
+        $(function(){
+            const products = {
+                        "사과" : 3000,
+                        "바나나" : 2000,
+                        "체리" : 8000,
+                        "포도" : 7000,
+                        "수박" : 5000
+            };
+            $.each(products,function(key,value){
+                // console.log(`${key} : ${value}원`);
+                $('#fruit_div').append(`<ul><li>${key} : ${value}원</li></ul>`);
+            });
+
+            $('#discount_btn').on('click',function(){
+                $.each(products,function(key,value){
+                    // $('fruitDiscount').html('');
+                    if(value >= 7000){
+                        value = value * 0.8;
+                    }else if(value >= 5000){
+                        value = value * 0.9;
+                    }
+                    $('#fruitDiscount').append(`<ul><li>${key} : ${value}원</li></ul>`);
+                    // console.log(value);
                 });
             })
         })
