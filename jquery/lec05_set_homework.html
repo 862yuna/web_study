@@ -42,17 +42,18 @@
         let inter1;
         let inter2;
         $(function(){
-            let num = 100;
+            let num1 = 100;
+            let num2 = 100;
             $('#widthBtn').click(function(){
                 // let num1 = 100;
                 inter1 = setInterval(function(){
-                $('#image').css('width',`${num+=10}`);
+                $('#image').css('width',`${num1+=10}`);
                 },1000);
             });
             $('#heightBtn').click(function(){
                 // let num2 = 100;
                 inter2 = setInterval(function(){
-                $('#image').css('height',`${num+=10}`);
+                $('#image').css('height',`${num2+=10}`);
                 },1000);                
             })
 
