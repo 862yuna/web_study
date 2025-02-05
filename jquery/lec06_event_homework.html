@@ -22,18 +22,43 @@
             </select><br>
             <label for="content">내용</label>
             <textarea name="content" id="content" cols="30" rows="10"></textarea>
-            <span></span>
+            <span>0/100</span>
         </form>
     </div>
 <script>
     $(function(){
-        $('#content').keydown(function(){
-            let txt = $(this).val().length;
+        let txt;
+        let str;
+        let total;
+        $('#content').keypress(function(){
+            txt = $(this).val().length;
             console.log(txt);
             // console.log($(this).text().length);
-            $('#eventContainer span').html(`${txt}/100`);
+            if(txt<=100){
+                $('#eventContainer span').html(`${txt}/100`);
+            }else{
+                alert('100글자 이상 입력하실 수 없습니다.');
+            }
+        });
+        $('#type').on('change',function(){
+            let num = $('select[name=type] option:selected').val();
+            console.log(num);
+            switch(num){
+                case '0' : str=""; break;
+                case '1' :
+                    str='행사명:\n행사일:\n장 소:';break;
+                case '2' :
+                    str= '키워드: \n요 약:\n';break;
+                case '3' : str="";break;   
+            }
+            $('#content').val(str);
+            let txt2 = str.length
+            console.log(txt2);
+            total = txt + txt2;
+            
 
         })
+
     })
 </script>
 </body>

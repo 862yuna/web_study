@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>effect 과제</title>
+    <script src="../resources/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <style>
+        #notice_div {
+            width: 300px;
+            padding: 20px;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: none; /* 초기에는 숨김 */
+        }
+
+        .notice_hide{
+            display: none;
+        }
+    </style>
+    <h1>공지사항 숨기기</h1>
+    <button id="showBtn">공지 보기</button>
+    <button id="hideBtn" class="notice_hide">공지 숨기기</button>
+    <div id="notice_div">
+        📢공지사항: 서버 점검으로 인해 내일 02:00 ~ 04:00 서비스가 중단됩니다.
+    </div>
+    <script>
+        $(function(){
+            $('#showBtn').click(function(){
+                $('#notice_div').show('slow');
+                $('#showBtn').addClass('notice_hide');
+                $('#hideBtn').removeClass('notice_hide');
+            });
+            $('#hideBtn').click(function(){
+                $('#notice_div').hide('slow');
+                $('#hideBtn').addClass('notice_hide');
+                $('#showBtn').removeClass('notice_hide');
+            })
+        })
+    </script>
+</body>
+</html>
