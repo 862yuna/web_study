@@ -48,18 +48,28 @@
                 case '1' :
                     str='행사명:\n행사일:\n장 소:';break;
                 case '2' :
-                    str= '키워드: \n요 약:\n';break;
+                    str= '키워드:\n요 약:\n';break;
                 case '3' : str="";break;   
             }
-            $('#content').val(str);
-            let txt2 = str.length
-            console.log(txt2);
-            total = txt + txt2;
-            
-
+            $('#content').val(str);           
         })
 
     })
+</script>
+<h1>2. 제곱 계산기</h1>
+<div id="calResult">
+    2 * 1 = 2
+</div>
+<button id="square">클릭</button>
+<script>
+    $(document).ready(function(){
+        let multi = 1;
+        $('#square').click(function(){
+            let num = multi;
+            multi *= 2;
+            $('#calResult').text(`2 * ${num} = ${multi}`);
+        });
+    });
 </script>
 </body>
 </html>
